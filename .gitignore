@@ -6,4 +6,9 @@ pdfs/ncc2022-volume-one-20230501b.pdf
 pdfs/ncc2022-volume-three-20230501b.pdf
 pdfs/ncc2022-volume-two-20230501b.pdf
 chroma/chroma.sqlite3
-
+chroma/cf1edf2f-8408-468f-a8a4-72a1f0cdab12/data_level0.bin
+chroma/cf1edf2f-8408-468f-a8a4-72a1f0cdab12/header.bin
+chroma/cf1edf2f-8408-468f-a8a4-72a1f0cdab12/index_metadata.pickle
+chroma/cf1edf2f-8408-468f-a8a4-72a1f0cdab12/length.bin
+chroma/cf1edf2f-8408-468f-a8a4-72a1f0cdab12/link_lists.bin
+e
