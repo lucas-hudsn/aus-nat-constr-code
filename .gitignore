@@ -11,4 +11,5 @@ chroma/cf1edf2f-8408-468f-a8a4-72a1f0cdab12/header.bin
 chroma/cf1edf2f-8408-468f-a8a4-72a1f0cdab12/index_metadata.pickle
 chroma/cf1edf2f-8408-468f-a8a4-72a1f0cdab12/length.bin
 chroma/cf1edf2f-8408-468f-a8a4-72a1f0cdab12/link_lists.bin
-e
+__pycache__/Retriever.cpython-312.pyc
+test_fns.ipynb
