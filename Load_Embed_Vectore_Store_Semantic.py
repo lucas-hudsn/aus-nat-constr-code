@@ -1,7 +1,8 @@
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_text_splitters import RecursiveCharacterTextSplitter  
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.document_loaders import PyPDFDirectoryLoader
+from langchain_experimental.text_splitter import SemanticChunker
 
 #Load PDF files from directory files are sourced from: https://ncc.abcb.gov.au/editions-national-construction-code
 def load_pdf_files(dir):
@@ -10,10 +11,8 @@ def load_pdf_files(dir):
     return docs
 
 #Split the documents into text chunks
-def split_documents(docs):
-    text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=2000, chunk_overlap=200, add_start_index=True
-    )
+def split_documents(docs, embeddings):
+    text_splitter = SemanticChunker(embeddings=embeddings)
     texts = text_splitter.split_documents(docs)
     return texts
 
@@ -23,7 +22,7 @@ def store_text_chunks(texts, embeddings, persist_directory):
         documents=texts,
         embedding=embeddings,
         persist_directory=persist_directory,
-        collection_name='NCC_codes_recursive'
+        collection_name='NCC_codes',
     )
     return vectordb
 
@@ -33,7 +32,7 @@ if __name__ == "__main__":
     persist_directory = "./chroma"
     docs = load_pdf_files(dir)
     print(f"Loaded {len(docs)} documents")
-    texts = split_documents(docs)
+    texts = split_documents(docs, embeddings=embeddings)
     print(f"Split {len(docs)} documents into {len(texts)} text chunks")
     vectordb = store_text_chunks(texts, embeddings, persist_directory)
     print(f"Chroma directory: {persist_directory}")
