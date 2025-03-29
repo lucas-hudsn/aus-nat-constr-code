@@ -39,4 +39,4 @@ def generate_answer_from_context(retriever, llm, question: str):
     rag_chain = {"context": retriever, "question": RunnablePassthrough()} | prompt | llm
 
     # Invoke the RAG chain with the question and return the generated content
-    return rag_chain.invoke(question)#.content
+    return rag_chain.stream(question)#.content
